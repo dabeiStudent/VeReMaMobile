@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -55,12 +56,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()) {
                     try {
-                        Toast.makeText(getApplicationContext(), response.body().getMessage().toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), response.body().getUser().getUser().getTen_tk(), Toast.LENGTH_LONG).show();
                         User user = new User(
-                                response.body().getUser().getMa_tk(),
-                                response.body().getUser().getTen_tk(),
-                                response.body().getUser().getMat_khau(),
-                                response.body().getUser().getQuyen()
+                                response.body().getUser().getUser().getMa_tk(),
+                                response.body().getUser().getUser().getTen_tk(),
+                                response.body().getUser().getUser().getMat_khau(),
+                                response.body().getUser().getUser().getQuyen()
                         );
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
                         Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);

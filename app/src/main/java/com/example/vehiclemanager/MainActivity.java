@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -16,18 +19,17 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private Button btn;
     APIService mapiService;
+    private ArrayList<Account> accountArrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        String[] accounts = {"ACC1","ACC2","ACC3","ACC4"};
 
         listView=(ListView) findViewById(R.id.lv);
         btn = (Button) findViewById(R.id.btnacc);
         btn.setOnClickListener(view -> showacc());
-        ListAccAdapter adapter = new ListAccAdapter(this,accounts);
-        listView.setAdapter(adapter);
+
     }
     private void showacc(){
         mapiService=RetrofitClient.getRetrofit().create(APIService.class);
@@ -38,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful())
                 {
                     try{
+                        accountArrayList = response.body().getAllAccounts();
+                        for(int i=0;i<accountArrayList.size();i++){
+                            Custom custom = new Custom(accountArrayList,MainActivity.this,R.layout.single_view);
+                            listView.setAdapter(custom);
+                        }
                         Toast.makeText(getApplicationContext(), response.body().getSuccess(), Toast.LENGTH_LONG).show();
                     }catch (Exception e){
                         e.printStackTrace();

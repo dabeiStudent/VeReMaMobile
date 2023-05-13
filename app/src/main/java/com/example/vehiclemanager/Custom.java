@@ -49,12 +49,14 @@ public class Custom extends BaseAdapter {
         viewHolder.matkhau=view.findViewById(R.id.matkhau);
         viewHolder.img=view.findViewById(R.id.img);
         viewHolder.quyen=view.findViewById(R.id.quyen);
+
         Account account = accountArrayList.get(i);
-        viewHolder.matk.setText(account.getMa_tk());
-        viewHolder.tentk.setText(account.getTen_tk());
-        viewHolder.matkhau.setText(account.getMat_khau());
-        viewHolder.img.setText(account.getImage());
-        viewHolder.quyen.setText(account.getQuyen());
+
+        viewHolder.matk.setText("Mã tài khoản: "+account.getMa_tk());
+        viewHolder.tentk.setText("Tên tài khoản: "+account.getTen_tk());
+        viewHolder.matkhau.setText("Mật khẩu: "+account.getMat_khau());
+        viewHolder.img.setText("Hình ảnh: "+account.getImage());
+        viewHolder.quyen.setText("Quyền: "+account.getQuyen());
         return view;
     }
 }

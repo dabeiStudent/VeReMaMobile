@@ -4,6 +4,7 @@ import com.bumptech.glide.annotation.GlideExtension;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -21,4 +22,7 @@ public interface APIService {
 
     @GET("getallaccmb")
     Call<AccountResponse> getacc();
+
+    @GET("getallstaffmb")
+    Call<StaffResponse> getstaff();
 }

@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         etPassword=findViewById(R.id.etPass);
         btnLogin=(Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(view -> login());
-        txtReg=findViewById(R.id.tvRegister);
         rmb= findViewById(R.id.cbremember);
     }
     private void login(){

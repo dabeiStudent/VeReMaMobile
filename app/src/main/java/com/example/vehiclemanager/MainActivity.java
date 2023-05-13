@@ -3,12 +3,10 @@ package com.example.vehiclemanager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -17,9 +15,10 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
-    private Button btn;
+    private Button btnacc,btnstaff;
     APIService mapiService;
     private ArrayList<Account> accountArrayList;
+    private ArrayList<Staff> staffArrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listView=(ListView) findViewById(R.id.lv);
-        btn = (Button) findViewById(R.id.btnacc);
-        btn.setOnClickListener(view -> showacc());
+        btnacc = (Button) findViewById(R.id.btnacc);
+        btnacc.setOnClickListener(view -> showacc());
+        btnstaff = (Button) findViewById(R.id.btnstaff);
+        btnstaff.setOnClickListener(view -> showstaff());
 
     }
     private void showacc(){
@@ -42,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
                     try{
                         accountArrayList = response.body().getAllAccounts();
                         for(int i=0;i<accountArrayList.size();i++){
-                            Custom custom = new Custom(accountArrayList,MainActivity.this,R.layout.single_view);
+                            Custom custom = new Custom(accountArrayList,MainActivity.this,R.layout.single_view_account);
                             listView.setAdapter(custom);
                         }
-                        Toast.makeText(getApplicationContext(), response.body().getSuccess(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "tài khoản", Toast.LENGTH_LONG).show();
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -56,6 +57,32 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<AccountResponse> call, Throwable t) {
+                Toast.makeText(MainActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void showstaff(){
+        mapiService= RetrofitClient.getRetrofit().create(APIService.class);
+        Call<StaffResponse> call = mapiService.getstaff();
+        call.enqueue(new Callback<StaffResponse>() {
+            @Override
+            public void onResponse(Call<StaffResponse> call, Response<StaffResponse> response) {
+                if(response.isSuccessful()){
+                    try{
+                        staffArrayList = response.body().getAllStaffs();
+                        for(int i=0;i<accountArrayList.size();i++){
+                            Customstaffadapter custom = new Customstaffadapter(staffArrayList,MainActivity.this,R.layout.single_view_staff);
+                            listView.setAdapter(custom);
+                        }
+                        Toast.makeText(getApplicationContext(), "nhân viên", Toast.LENGTH_LONG).show();
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StaffResponse> call, Throwable t) {
                 Toast.makeText(MainActivity.this, t.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });

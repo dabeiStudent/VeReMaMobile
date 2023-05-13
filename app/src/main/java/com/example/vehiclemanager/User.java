@@ -8,16 +8,12 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @SerializedName("ma_tk")
-    @Expose
     private String ma_tk;
     @SerializedName("ten_tk")
-    @Expose
     private String ten_tk;
     @SerializedName("mat_khau")
-    @Expose
     private String mat_khau;
     @SerializedName("quyen")
-    @Expose
     private String quyen;
 
     public User(String ma_tk, String ten_tk, String mat_khau, String quyen) {

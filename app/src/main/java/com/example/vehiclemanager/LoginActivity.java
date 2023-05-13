@@ -56,12 +56,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()) {
                     try {
-                        Toast.makeText(getApplicationContext(), response.body().getUser().getUser().getTen_tk(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
                         User user = new User(
-                                response.body().getUser().getUser().getMa_tk(),
-                                response.body().getUser().getUser().getTen_tk(),
-                                response.body().getUser().getUser().getMat_khau(),
-                                response.body().getUser().getUser().getQuyen()
+                                response.body().getUser().get(0).getMa_tk(),
+                                response.body().getUser().get(0).getTen_tk(),
+                                response.body().getUser().get(0).getMat_khau(),
+                                response.body().getUser().get(0).getQuyen()
                         );
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
                         Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);

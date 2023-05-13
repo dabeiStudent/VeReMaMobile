@@ -7,14 +7,14 @@ public class LoginResponse {
     private String success;
     private String message;
     private String token;
-    private ListUser listuser;
+    private List<User> user;
 
 
-    public LoginResponse(String success, String message, String token, ListUser listuser) {
+    public LoginResponse(String success, String message, String token, List<User> user) {
         this.success = success;
         this.message = message;
         this.token = token;
-        this.listuser = listuser;
+        this.user = user;
     }
 
     public String getSuccess() {
@@ -40,11 +40,11 @@ public class LoginResponse {
         this.token = token;
     }
 
-    public ListUser getUser() {
-        return listuser;
+    public List<User> getUser() {
+        return user;
     }
 
-    public void setUser(ListUser user) {
-        this.listuser = listuser;
+    public void setUser(List<User> user) {
+        this.user = user;
     }
 }

@@ -25,4 +25,6 @@ public interface APIService {
 
     @GET("getallstaffmb")
     Call<StaffResponse> getstaff();
+    @GET("getallcusmb")
+    Call<CustomerResponse> getcustomer();
 }

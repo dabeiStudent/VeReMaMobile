@@ -1,10 +1,13 @@
 package com.example.vehiclemanager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etName,etPassword;
     private Button btnLogin,btnProfile;
     private TextView txtV,txtReg;
+    private CheckBox rmb;
     APIService mapiService;
     @Override
     protected void onCreate (Bundle savedInstanceState){
@@ -38,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin=(Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(view -> login());
         txtReg=findViewById(R.id.tvRegister);
+        rmb= findViewById(R.id.cbremember);
     }
     private void login(){
         String userName = etName.getText().toString().trim();

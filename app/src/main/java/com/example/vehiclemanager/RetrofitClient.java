@@ -11,7 +11,7 @@ public class RetrofitClient {
     public static Retrofit getRetrofit(){
         if(retrofit==null){
             retrofit= new Retrofit.Builder()
-                    .baseUrl("http://verema.herokuapp.com/")
+                    .baseUrl("http://192.168.1.7:3000/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

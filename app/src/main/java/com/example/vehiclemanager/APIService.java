@@ -19,8 +19,6 @@ public interface APIService {
     @POST("signinmb")
     Call<LoginResponse> login (@Field("userName") String username, @Field("passWord") String password);
 
-    @FormUrlEncoded
-    @POST("api/auth/signup")
-    Call<User> signup (@Field("username") String username, @Field("password") String password, @Field("repassword") String repassword);
-
+    @GET("getallaccmb")
+    Call<AccountResponse> getacc();
 }

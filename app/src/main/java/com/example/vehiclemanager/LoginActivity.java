@@ -38,13 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin=(Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(view -> login());
         txtReg=findViewById(R.id.tvRegister);
-        txtReg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
     }
     private void login(){
         String userName = etName.getText().toString().trim();
@@ -64,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                                 response.body().getUser().get(0).getQuyen()
                         );
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
-                        Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     } catch(Exception e){
                         e.printStackTrace();

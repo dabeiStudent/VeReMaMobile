@@ -15,9 +15,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCreattime"
-        app:layout_constraintVertical_bias="0.84" />
+        app:layout_constraintVertical_bias="0.729" />
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -31,9 +32,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tên: "
+        android:layout_marginTop="6dp"
         android:gravity="center"
+        android:text="Tên: "
         app:layout_constraintBottom_toTopOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/ivImage"
         tools:layout_editor_absoluteX="0dp" />
 
     <TextView
@@ -47,7 +50,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245" />
+        app:layout_constraintVertical_bias="0.273" />
 
     <TextView
         android:layout_width="match_parent"
@@ -94,10 +97,11 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vai trò: "
         android:gravity="center"
+        android:text="Vai trò: "
         app:layout_constraintBottom_toTopOf="@+id/tvCreattime"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -115,22 +119,16 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPass"
         app:layout_constraintVertical_bias="0.062" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="44dp"
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="76dp"
         android:gravity="center"
-        android:text="Image:"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreattime"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <TextView
-        android:id="@+id/tvImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:src="@drawable/background_color_login"
         android:text="TextView"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

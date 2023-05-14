@@ -74,9 +74,16 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this,t.getMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this,"Server đã đóng",Toast.LENGTH_LONG).show();
             }
         });
+    }
+    @Override
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }
 

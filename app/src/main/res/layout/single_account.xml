@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_android_black_24dp"/>
+
+        <TextView
+            android:id="@+id/tvmaTk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/img"
+            android:text="MaTk" />
+
+        <TextView
+            android:id="@+id/tvtenTk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@id/img"
+            android:layout_marginTop="30dp"
+            android:text="TenTk" />
+        <TextView
+            android:id="@+id/tvMatkhau"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MatKhau"
+            android:layout_toEndOf="@id/img"
+            android:layout_marginTop="50dp"/>
+        <TextView
+            android:id="@+id/tvQuyen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quyen"
+            android:layout_toEndOf="@id/img"
+            android:layout_marginTop="70dp"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

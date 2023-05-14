@@ -13,13 +13,16 @@ public class User implements Serializable {
     private String ten_tk;
     @SerializedName("mat_khau")
     private String mat_khau;
+    @SerializedName("image")
+    private String image;
     @SerializedName("quyen")
     private String quyen;
 
-    public User(String ma_tk, String ten_tk, String mat_khau, String quyen) {
+    public User(String ma_tk, String ten_tk, String mat_khau,String image, String quyen) {
         this.ma_tk = ma_tk;
         this.ten_tk = ten_tk;
         this.mat_khau = mat_khau;
+        this.image=image;
         this.quyen = quyen;
     }
     public String getMa_tk() {
@@ -54,4 +57,11 @@ public class User implements Serializable {
         this.quyen = quyen;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

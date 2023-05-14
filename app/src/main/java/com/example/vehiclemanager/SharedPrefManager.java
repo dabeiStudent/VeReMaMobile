@@ -9,6 +9,7 @@ public class SharedPrefManager {
     private static final String KEY_ID="keyid";
     private static final String KEY_USERNAME="keyusername";
     private static final String KEY_PASSWORD="keypassword";
+    private static final String KEY_IMAGE ="keyimage";
     private static final String KEY_ROLE="keyrole";
     private static SharedPrefManager mInstance;
     private static Context ctx;
@@ -28,6 +29,7 @@ public class SharedPrefManager {
         editor.putString(KEY_ID,user.getMa_tk());
         editor.putString(KEY_USERNAME,user.getTen_tk());
         editor.putString(KEY_PASSWORD,user.getMat_khau());
+        editor.putString(KEY_IMAGE,user.getImage());
         editor.putString(KEY_ROLE,user.getQuyen());
         editor.apply();
     }
@@ -41,6 +43,7 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_ID, null),
                 sharedPreferences.getString(KEY_USERNAME, null),
                 sharedPreferences.getString(KEY_PASSWORD, null),
+                sharedPreferences.getString(KEY_IMAGE, null),
                 sharedPreferences.getString(KEY_ROLE, null)
         );
     }

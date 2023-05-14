@@ -28,8 +28,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText etName,etPassword;
-    private Button btnLogin,btnProfile;
-    private TextView txtV,txtReg;
+    private Button btnLogin;
     private CheckBox rmb;
     APIService mapiService;
     @Override
@@ -58,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                                 response.body().getUser().get(0).getMa_tk(),
                                 response.body().getUser().get(0).getTen_tk(),
                                 response.body().getUser().get(0).getMat_khau(),
+                                response.body().getUser().get(0).getImage(),
                                 response.body().getUser().get(0).getQuyen()
                         );
                         SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);

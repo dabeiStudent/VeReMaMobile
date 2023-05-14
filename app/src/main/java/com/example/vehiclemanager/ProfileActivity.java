@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity  implements View.OnClickListener{
-    TextView tvId,tvName,tvPass,tvTime;
+    TextView tvId,tvName,tvPass,tvTime,tvImage;
     Button btnLogout;
     @Override
     protected void onCreate(Bundle savedInstancestate){
@@ -21,12 +21,14 @@ public class ProfileActivity extends AppCompatActivity  implements View.OnClickL
             tvName = findViewById(R.id.tvName);
             tvPass = findViewById(R.id.tvPass);
             tvTime = findViewById(R.id.tvCreattime);
+            tvImage=findViewById(R.id.tvImage);
             btnLogout = findViewById(R.id.btnLogout);
             User user = SharedPrefManager.getInstance(this).getUser();
             tvId.setText(user.getMa_tk());
             tvName.setText(user.getTen_tk());
             tvPass.setText(user.getMat_khau());
             tvTime.setText(user.getQuyen());
+            tvImage.setText(user.getImage());
             btnLogout.setOnClickListener(this);
         }else{
             Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);

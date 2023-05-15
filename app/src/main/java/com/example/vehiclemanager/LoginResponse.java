@@ -9,12 +9,14 @@ public class LoginResponse {
     private String token;
     private List<User> user;
 
+    private List<AccountDetail> detail;
 
-    public LoginResponse(String success, String message, String token, List<User> user) {
+    public LoginResponse(String success, String message, String token, List<User> user, List<AccountDetail> detail) {
         this.success = success;
         this.message = message;
         this.token = token;
         this.user = user;
+        this.detail = detail;
     }
 
     public String getSuccess() {
@@ -32,6 +34,7 @@ public class LoginResponse {
     public void setMessage(String message) {
         this.message = message;
     }
+
     public String getToken() {
         return token;
     }
@@ -46,5 +49,13 @@ public class LoginResponse {
 
     public void setUser(List<User> user) {
         this.user = user;
+    }
+
+    public List<AccountDetail> getDetail() {
+        return detail;
+    }
+
+    public void setDetail(List<AccountDetail> detail) {
+        this.detail = detail;
     }
 }

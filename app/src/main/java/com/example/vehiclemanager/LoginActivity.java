@@ -52,7 +52,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()) {
                     try {
-                        Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_LONG).show();
                         User user = new User(
                                 response.body().getUser().get(0).getMa_tk(),
                                 response.body().getUser().get(0).getTen_tk(),
@@ -60,7 +59,12 @@ public class LoginActivity extends AppCompatActivity {
                                 response.body().getUser().get(0).getImage(),
                                 response.body().getUser().get(0).getQuyen()
                         );
-                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+                        AccountDetail detail = new AccountDetail(
+                                response.body().getDetail().get(0).getTen(),
+                                response.body().getDetail().get(0).getDia_chi(),
+                                response.body().getDetail().get(0).getSdt()
+                        );
+                        SharedPrefManager.getInstance(getApplicationContext()).userLogin(user,detail);
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                     } catch(Exception e){

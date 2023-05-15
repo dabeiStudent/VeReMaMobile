@@ -11,6 +11,9 @@ public class SharedPrefManager {
     private static final String KEY_PASSWORD="keypassword";
     private static final String KEY_IMAGE ="keyimage";
     private static final String KEY_ROLE="keyrole";
+    private static final String KEY_NAME="keyname";
+    private static final String KEY_ADDRESS="keyaddress";
+    private static final String KEY_PHONE="keyphone";
     private static SharedPrefManager mInstance;
     private static Context ctx;
     private SharedPrefManager(Context context){
@@ -22,7 +25,7 @@ public class SharedPrefManager {
         }
         return mInstance;
     }
-    public void userLogin(User user)
+    public void userLogin(User user, AccountDetail detail)
     {
         SharedPreferences sharedPreferences=ctx.getSharedPreferences(SHARED_REF_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor= sharedPreferences.edit();
@@ -31,6 +34,9 @@ public class SharedPrefManager {
         editor.putString(KEY_PASSWORD,user.getMat_khau());
         editor.putString(KEY_IMAGE,user.getImage());
         editor.putString(KEY_ROLE,user.getQuyen());
+        editor.putString(KEY_NAME,detail.getTen());
+        editor.putString(KEY_ADDRESS,detail.getDia_chi());
+        editor.putString(KEY_PHONE,detail.getSdt());
         editor.apply();
     }
     public boolean isLoggedIn(){
@@ -45,6 +51,14 @@ public class SharedPrefManager {
                 sharedPreferences.getString(KEY_PASSWORD, null),
                 sharedPreferences.getString(KEY_IMAGE, null),
                 sharedPreferences.getString(KEY_ROLE, null)
+        );
+    }
+    public AccountDetail getDetail(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_REF_NAME, Context.MODE_PRIVATE);
+        return new AccountDetail(
+                sharedPreferences.getString(KEY_NAME,null),
+                sharedPreferences.getString(KEY_ADDRESS,null),
+                sharedPreferences.getString(KEY_PHONE,null)
         );
     }
     public void logout(){

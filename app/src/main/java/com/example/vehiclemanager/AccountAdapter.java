@@ -40,10 +40,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
             return;
         }else{
             Glide.with(this.context).load(account.getImage()).into(holder.img);
-            holder.tvmaTk.setText(String.valueOf(account.getMa_tk()));
             holder.tvTentk.setText(String.valueOf(account.getTen_tk()));
-            holder.tvMatkhau.setText(String.valueOf(account.getMat_khau()));
-            holder.tvQuyen.setText(String.valueOf(account.getQuyen()));
         }
     }
 
@@ -59,14 +56,11 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.AccountV
     public class AccountViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView img;
-        private final TextView tvmaTk,tvTentk,tvMatkhau,tvQuyen;
+        private final TextView tvTentk;
         public AccountViewHolder(@NonNull View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
-            tvmaTk= itemView.findViewById(R.id.tvmaTk);
             tvTentk=itemView.findViewById(R.id.tvtenTk);
-            tvMatkhau=itemView.findViewById(R.id.tvMatkhau);
-            tvQuyen = itemView.findViewById(R.id.tvQuyen);
         }
     }
 }

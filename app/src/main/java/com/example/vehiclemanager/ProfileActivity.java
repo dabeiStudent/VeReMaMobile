@@ -51,12 +51,10 @@ public class ProfileActivity extends AppCompatActivity  implements View.OnClickL
                     switch(item.getItemId()){
                         case R.id.action_home:
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                             finish();
                             return true;
                         case R.id.action_manage:
                             startActivity(new Intent(getApplicationContext(),ManageActivity.class));
-                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                             finish();
                             return true;
                         case R.id.action_profile:

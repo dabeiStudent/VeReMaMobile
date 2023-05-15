@@ -1,8 +1,9 @@
 package com.example.vehiclemanager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class StaffResponse {
+public class StaffResponse implements Serializable {
     private ArrayList<Staff> allStaffs;
 
     public StaffResponse(ArrayList<Staff> allStaffs) {

@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,9 +25,9 @@ import retrofit2.Response;
 
 public class ManageActivity extends AppCompatActivity {
     private ListView listView;
-    private RecyclerView rcView;
-    private Button btnacc,btnstaff, btncus;
-    private ImageView imgprofile;
+    private RecyclerView rcView, rcView2, rcView3;
+    private Button btnstaff, btncus;
+    private TextView tvList;
     APIService mapiService;
     private ArrayList<Account> accountArrayList;
     private ArrayList<Staff> staffArrayList;
@@ -35,10 +37,20 @@ public class ManageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.manage_layout);
+        btncus=(Button)findViewById(R.id.btnCus);
+        btncus.setOnClickListener(view->showcustomer());
+        btnstaff=(Button)findViewById(R.id.btnStaff);
+        btnstaff.setOnClickListener(view->showstaff());
+        tvList=(TextView)findViewById(R.id.tvList);
         //Set adapter cho recyclerview
+        //account
         rcView = (RecyclerView)findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         rcView.setLayoutManager(linearLayoutManager);
+        //staff & customer
+        rcView2= (RecyclerView)findViewById(R.id.recyclerView2);
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false);
+        rcView2.setLayoutManager(linearLayoutManager1);
 
         //Bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
@@ -49,7 +61,6 @@ public class ManageActivity extends AppCompatActivity {
                 switch(item.getItemId()){
                     case R.id.action_home:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                         finish();
                         return true;
                     case R.id.action_manage:
@@ -99,12 +110,10 @@ public class ManageActivity extends AppCompatActivity {
             public void onResponse(Call<StaffResponse> call, Response<StaffResponse> response) {
                 if(response.isSuccessful()){
                     try{
+                        tvList.setText("DANH SÁCH NHÂN VIÊN");
                         staffArrayList = response.body().getAllStaffs();
-                        for(int i=0;i<staffArrayList.size();i++){
-                            Customstaffadapter custom = new Customstaffadapter(staffArrayList,ManageActivity.this,R.layout.single_view_staff);
-                            listView.setAdapter(custom);
-                        }
-                        Toast.makeText(ManageActivity.this, "nhân viên", Toast.LENGTH_LONG).show();
+                        StaffAdapter staffAdapter = new StaffAdapter(staffArrayList, getApplicationContext());
+                        rcView2.setAdapter(staffAdapter);
                     }catch(Exception e){
                         e.printStackTrace();
                     }
@@ -127,12 +136,10 @@ public class ManageActivity extends AppCompatActivity {
             public void onResponse(Call<CustomerResponse> call, Response<CustomerResponse> response) {
                 if(response.isSuccessful()){
                     try{
+                        tvList.setText("DANH SÁCH KHÁCH HÀNG");
                         customerArrayList= response.body().getAllCustomers();
-                        for(int i=0;i<customerArrayList.size();i++){
-                            Customcustomeradapter custom = new Customcustomeradapter(customerArrayList,ManageActivity.this,R.layout.single_view_customer);
-                            listView.setAdapter(custom);
-                        }
-                        Toast.makeText(ManageActivity.this, "khách hàng", Toast.LENGTH_LONG).show();
+                        CustomerAdapter customerAdapter = new CustomerAdapter(customerArrayList,getApplicationContext());
+                        rcView2.setAdapter(customerAdapter);
                     }catch(Exception e){
                         e.printStackTrace();
                     }

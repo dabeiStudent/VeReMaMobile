@@ -4,15 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/manage_background">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="DANH SÁCH TÀI KHOẢN"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView" />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/white_background"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.887"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/tvList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="DANH SÁCH"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:text="Chọn danh sách"
+                android:gravity="center"/>
+            <Button
+                android:id="@+id/btnStaff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NHÂN VIÊN"
+                android:backgroundTint="#364947"
+                android:shadowRadius="10"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/btnCus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KHÁCH HÀNG"
+                android:backgroundTint="#364947"
+                android:shadowRadius="10"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
@@ -26,4 +103,6 @@
         app:itemRippleColor="@android:color/transparent"
         app:itemIconTint="@drawable/item_selector"
         app:itemTextColor="@drawable/item_selector"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,4 +27,11 @@ public interface APIService {
     Call<StaffResponse> getstaff();
     @GET("getallcusmb")
     Call<CustomerResponse> getcustomer();
+    @FormUrlEncoded
+    @POST("updateprofilestaff")
+    Call<SubmitResponse> updatestaff (@Field("ten") String ten,@Field("username") String username, @Field("sdt") String sdt, @Field("dia_chi") String dia_chi);
+
+    @FormUrlEncoded
+    @POST("updateprofilecustomer")
+    Call<SubmitResponse> updatescustomer (@Field("ten") String ten,@Field("username") String username, @Field("sdt") String sdt, @Field("dia_chi") String dia_chi);
 }

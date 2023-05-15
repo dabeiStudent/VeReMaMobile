@@ -1,11 +1,13 @@
 package com.example.vehiclemanager;
 
-public class Staff {
-    private String ma_nv,ten_nv,gioi_tinh,dia_chi,sdt,ngay_sinh,ngay_gianhap,luong,ten_tk;
+import java.io.Serializable;
 
-    public Staff(String ma_nv, String ten_nv, String gioi_tinh, String dia_chi, String sdt, String ngay_sinh, String ngay_gianhap, String luong, String ten_tk) {
+public class Staff implements Serializable {
+    private String ma_nv,ten,gioi_tinh,dia_chi,sdt,ngay_sinh,ngay_gianhap,luong,ten_tk;
+
+    public Staff(String ma_nv, String ten, String gioi_tinh, String dia_chi, String sdt, String ngay_sinh, String ngay_gianhap, String luong, String ten_tk) {
         this.ma_nv = ma_nv;
-        this.ten_nv = ten_nv;
+        this.ten = ten;
         this.gioi_tinh = gioi_tinh;
         this.dia_chi = dia_chi;
         this.sdt = sdt;
@@ -23,12 +25,12 @@ public class Staff {
         this.ma_nv = ma_nv;
     }
 
-    public String getTen_nv() {
-        return ten_nv;
+    public String getTen() {
+        return ten;
     }
 
-    public void setTen_nv(String ten_nv) {
-        this.ten_nv = ten_nv;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getGioi_tinh() {

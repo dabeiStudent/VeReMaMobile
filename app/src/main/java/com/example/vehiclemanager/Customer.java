@@ -1,11 +1,13 @@
 package com.example.vehiclemanager;
 
-public class Customer {
-    private String ma_kh, ten_kh,dia_chi,sdt,ten_tk;
+import java.io.Serializable;
 
-    public Customer(String ma_kh, String ten_kh, String dia_chi, String sdt, String ten_tk) {
+public class Customer implements Serializable {
+    private String ma_kh, ten,dia_chi,sdt,ten_tk;
+
+    public Customer(String ma_kh, String ten, String dia_chi, String sdt, String ten_tk) {
         this.ma_kh = ma_kh;
-        this.ten_kh = ten_kh;
+        this.ten = ten;
         this.dia_chi = dia_chi;
         this.sdt = sdt;
         this.ten_tk = ten_tk;
@@ -19,12 +21,12 @@ public class Customer {
         this.ma_kh = ma_kh;
     }
 
-    public String getTen_kh() {
-        return ten_kh;
+    public String getTen() {
+        return ten;
     }
 
-    public void setTen_kh(String ten_kh) {
-        this.ten_kh = ten_kh;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getDia_chi() {

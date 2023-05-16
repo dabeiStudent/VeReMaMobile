@@ -8,23 +8,27 @@ public class Order implements Serializable {
     private String bien_so;
     private String ten_kh;
     private String ngay_nhan;
+    private String ngay_sua;
     private String tg_du_kien;
     private int id_dv;
     private long tong_tien;
     private String ten_xe;
     private String img;
+    private String trang_thai;
 
-    public Order(String ma_psc, int ma_nv, String bien_so, String ten_kh, String ngay_nhan, String tg_du_kien, int id_dv, long tong_tien, String ten_xe, String img) {
+    public Order(String ma_psc, int ma_nv, String bien_so, String ten_kh, String ngay_nhan, String ngay_sua, String tg_du_kien, int id_dv, long tong_tien, String ten_xe, String img, String trang_thai) {
         this.ma_psc = ma_psc;
         this.ma_nv = ma_nv;
         this.bien_so = bien_so;
         this.ten_kh = ten_kh;
         this.ngay_nhan = ngay_nhan;
+        this.ngay_sua = ngay_sua;
         this.tg_du_kien = tg_du_kien;
         this.id_dv = id_dv;
         this.tong_tien = tong_tien;
         this.ten_xe = ten_xe;
         this.img = img;
+        this.trang_thai = trang_thai;
     }
 
     public String getMa_psc() {
@@ -67,6 +71,14 @@ public class Order implements Serializable {
         this.ngay_nhan = ngay_nhan;
     }
 
+    public String getNgay_sua() {
+        return ngay_sua;
+    }
+
+    public void setNgay_sua(String ngay_sua) {
+        this.ngay_sua = ngay_sua;
+    }
+
     public String getTg_du_kien() {
         return tg_du_kien;
     }
@@ -105,5 +117,13 @@ public class Order implements Serializable {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public String getTrang_thai() {
+        return trang_thai;
+    }
+
+    public void setTrang_thai(String trang_thai) {
+        this.trang_thai = trang_thai;
     }
 }

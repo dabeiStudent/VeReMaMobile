@@ -24,6 +24,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".DetailOrder"
+            android:exported="false" />
+        <activity
             android:name=".AddNewOrder"
             android:exported="false" />
         <activity
@@ -52,9 +55,6 @@
             android:exported="false" />
         <activity
             android:name=".ManageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditStaff"
             android:exported="false" />
     </application>
 

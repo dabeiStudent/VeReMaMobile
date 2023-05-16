@@ -38,7 +38,7 @@ public interface APIService {
     @FormUrlEncoded
     @POST("addneworder")
     Call<SubmitResponse> addneworder (@Field("maNv") int maNv,@Field("soXe") String soXe, @Field("tenXe") String tenXe,@Field("moTa") String moTa ,@Field("tenKh") String tenKh,
-                                      @Field("ngaynhan") String ngayNhan, @Field("thoiGian") String thoiGian,@Field("dichVu") int dichVu, @Field("tongTien") String tongTien,
+                                      @Field("ngayNhan") String ngayNhan, @Field("thoiGian") String thoiGian,@Field("dichVu") int dichVu, @Field("tongTien") String tongTien,
                                       @Field("diaChi") String diaChi, @Field("soDt") String soDt,@Field("tenTk") String tenTk, @Field("matKhau") String matKhau);
 
     @GET("getallordermb")

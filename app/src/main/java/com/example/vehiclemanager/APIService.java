@@ -7,13 +7,16 @@ import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface APIService {
     @FormUrlEncoded
@@ -43,4 +46,12 @@ public interface APIService {
 
     @GET("getallordermb")
     Call<OrderResponse> getorder();
+
+    @FormUrlEncoded
+    @POST("getorderbystaff")
+    Call<OrderStaffResponse> orderstaff(@Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("finishorder")
+    Call<SubmitResponse> finishorder(@Field("idorder") String idorder, @Field("date") String date);
 }

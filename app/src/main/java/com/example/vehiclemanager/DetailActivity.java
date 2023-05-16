@@ -48,6 +48,7 @@ public class DetailActivity extends AppCompatActivity {
             if (account.getImage().length() > 0) {
                 Glide.with(getApplicationContext()).load(account.getImage()).into(imageView);
             }
+            btnEdit.setVisibility(View.INVISIBLE);
         }
 
         Staff staff =(Staff) bundle.get("object_staff");

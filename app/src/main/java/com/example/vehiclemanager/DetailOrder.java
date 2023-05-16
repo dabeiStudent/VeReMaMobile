@@ -2,7 +2,9 @@ package com.example.vehiclemanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,7 +12,7 @@ import com.bumptech.glide.Glide;
 
 public class DetailOrder extends AppCompatActivity {
     private TextView tvVehiclename, tvVehicleid, tvOrderid, tvStaffid, tvCustomer,tvSubmitday,tvRepairday,tvExpecttime,tvIdservice,tvCost, tvStatus;
-    private ImageView ivVehicle;
+    private ImageView ivVehicle, ivSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class DetailOrder extends AppCompatActivity {
         tvVehiclename=(TextView) findViewById(R.id.tvVehiclename);
         tvVehicleid=(TextView)findViewById(R.id.tvVehicleid);
         ivVehicle=(ImageView) findViewById(R.id.ivVehicle);
+        ivSetting=(ImageView)findViewById(R.id.ivSetting);
         tvOrderid=(TextView)findViewById(R.id.tvIdorder);
         tvStaffid=(TextView)findViewById(R.id.tvNv);
         tvCustomer=(TextView)findViewById(R.id.tvKh);
@@ -57,11 +60,21 @@ public class DetailOrder extends AppCompatActivity {
                 tvIdservice.setText("Bảo trì");
             }
             tvCost.setText("Tổng tiền: "+order.getTong_tien()+" VND");
-            if(order.getTrang_thai() == "DaSua")
+            if(order.getTrang_thai().equals("DaSua"))
             {
                 tvStatus.setText("Đã sửa");
             }
         }
-
+        ivSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),FinishActivity.class);
+                //Luu du lieu vao bundle
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("object_order",order);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 }

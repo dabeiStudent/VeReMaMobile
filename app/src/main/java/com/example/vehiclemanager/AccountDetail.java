@@ -2,7 +2,9 @@ package com.example.vehiclemanager;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AccountDetail {
+import java.io.Serializable;
+
+public class AccountDetail implements Serializable {
     private String ten;
     private String dia_chi;
     private String sdt;

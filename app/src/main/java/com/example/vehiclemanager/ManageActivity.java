@@ -36,45 +36,53 @@ public class ManageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.manage_layout);
-        btncus=(Button)findViewById(R.id.btnCus);
-        btncus.setOnClickListener(view->showcustomer());
-        btnstaff=(Button)findViewById(R.id.btnStaff);
-        btnstaff.setOnClickListener(view->showstaff());
-        tvList=(TextView)findViewById(R.id.tvList);
-        //Set adapter cho recyclerview
-        //account
-        rcView = (RecyclerView)findViewById(R.id.recyclerView);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        rcView.setLayoutManager(linearLayoutManager);
-        //staff & customer
-        rcView2= (RecyclerView)findViewById(R.id.recyclerView2);
-        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false);
-        rcView2.setLayoutManager(linearLayoutManager1);
+        User user = SharedPrefManager.getInstance(this).getUser();
+        String role = user.getQuyen();
+        if(!role.equals("kh") && !role.equals("nv")) {
+            setContentView(R.layout.manage_layout);
+            btncus = (Button) findViewById(R.id.btnCus);
+            btncus.setOnClickListener(view -> showcustomer());
+            btnstaff = (Button) findViewById(R.id.btnStaff);
+            btnstaff.setOnClickListener(view -> showstaff());
+            tvList = (TextView) findViewById(R.id.tvList);
+            //Set adapter cho recyclerview
+            //account
+            rcView = (RecyclerView) findViewById(R.id.recyclerView);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+            rcView.setLayoutManager(linearLayoutManager);
+            //staff & customer
+            rcView2 = (RecyclerView) findViewById(R.id.recyclerView2);
+            LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+            rcView2.setLayoutManager(linearLayoutManager1);
 
-        //Bottom nav
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-        bottomNavigationView.setSelectedItemId(R.id.action_manage);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.action_home:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        finish();
-                        return true;
-                    case R.id.action_manage:
-                        return true;
-                    case R.id.action_profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-                        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                        finish();
-                        return true;
+            //Bottom nav
+            BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
+            bottomNavigationView.setSelectedItemId(R.id.action_manage);
+            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.action_home:
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
+                            return true;
+                        case R.id.action_manage:
+                            return true;
+                        case R.id.action_profile:
+                            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                            finish();
+                            return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
-        showacc();
+            });
+            showacc();
+        }else{
+            Toast.makeText(this, "Bạn không phải admin", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getApplicationContext(),ProfileActivity.class);
+            startActivity(i);
+        }
     }
     private void showacc(){
         mapiService=RetrofitClient.getRetrofit().create(APIService.class);

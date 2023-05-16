@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this,"Server đã đóng",Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this,t.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
     }

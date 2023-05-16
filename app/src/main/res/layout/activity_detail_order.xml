@@ -20,6 +20,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
                 android:background="@drawable/top_background_main">
+
+                <ImageView
+                    android:id="@+id/ivSetting"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/setting"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"/>
                 <TextView
                     android:id="@+id/tvIdorder"
                     android:layout_width="wrap_content"
@@ -201,7 +211,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textColor="@color/black"
-                            android:text="Ngày sửa xe"/>
+                            android:text="Ngày sửa xong"/>
                         <TextView
                             android:id="@+id/tvNgaysua"
                             android:layout_width="180dp"

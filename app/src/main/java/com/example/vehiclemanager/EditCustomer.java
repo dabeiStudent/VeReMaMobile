@@ -17,6 +17,7 @@ public class EditCustomer extends AppCompatActivity {
     private TextView textView;
     private EditText etName,etPhone,etAddress;
     private Button btnSubmit;
+    private String name;
     APIService mapiService;
 
     @Override
@@ -35,11 +36,15 @@ public class EditCustomer extends AppCompatActivity {
             return;
         }
         Customer customer = (Customer) bundle.get("object_customer");
-        textView.setText(customer.getTen_tk());
+        name=customer.getTen_tk();
+        textView.setText("Edit: "+customer.getTen_tk());
+        etName.setText(customer.getTen());
+        etPhone.setText(customer.getSdt());
+        etAddress.setText(customer.getDia_chi());
         btnSubmit.setOnClickListener(view -> submitUpdate());
     }
     private void submitUpdate(){
-        String username= textView.getText().toString().trim();
+        String username= name;
         String ten = etName.getText().toString().trim();
         String sdt = etPhone.getText().toString().trim();
         String dia_chi = etAddress.getText().toString().trim();

@@ -30,8 +30,8 @@ public class AddNewOrder extends AppCompatActivity {
         Anhxa();
         cNgaynhan.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                selected=year+"-"+(month+1)+"-"+day;
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int date) {
+                selected=year+"-"+(month+1)+"-"+date;
                 etNgaynhan.setText(selected);
             }
         });
@@ -79,6 +79,11 @@ public class AddNewOrder extends AppCompatActivity {
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
                     }
+                    else{
+                        Toast.makeText(getApplicationContext(), "Vui lòng nhập đủ dữ liệu", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), AddNewOrder.class);
+                        startActivity(i);
+                    }
                 }
 
                 @Override
@@ -86,5 +91,5 @@ public class AddNewOrder extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Vui long nhap du", Toast.LENGTH_LONG).show();
                 }
             });
-        }
+    }
 }

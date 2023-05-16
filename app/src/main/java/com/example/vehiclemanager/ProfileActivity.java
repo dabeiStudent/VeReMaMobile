@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.Serializable;
+
 public class ProfileActivity extends AppCompatActivity  implements View.OnClickListener{
     TextView tvUsername, tvFullname, tvAddress, tvPhone, tvRole1;
     ImageView ivImage, ivLogout;
@@ -36,6 +38,18 @@ public class ProfileActivity extends AppCompatActivity  implements View.OnClickL
             btnEdit=findViewById(R.id.btnEdit);
             User user = SharedPrefManager.getInstance(this).getUser();
             AccountDetail detail = SharedPrefManager.getInstance(this).getDetail();
+            btnEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(),EditProfile.class);
+                    //Luu du lieu vao bundle
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("object_user",user);
+                    bundle.putSerializable("object_detail", detail);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            });
             tvUsername.setText(user.getTen_tk());
             tvFullname.setText(detail.getTen());
             tvAddress.setText(detail.getDia_chi());

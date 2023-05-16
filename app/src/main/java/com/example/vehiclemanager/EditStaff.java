@@ -17,6 +17,7 @@ public class EditStaff extends AppCompatActivity {
     private TextView textView;
     private EditText etName,etPhone,etAddress;
     private Button btnSubmit;
+    private String name;
     APIService mapiService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +35,15 @@ public class EditStaff extends AppCompatActivity {
             return;
         }
         Staff staff =(Staff) bundle.get("object_staff");
-        textView.setText(staff.getTen_tk());
+        name=staff.getTen_tk();
+        textView.setText("Edit: "+staff.getTen_tk());
+        etName.setText(staff.getTen());
+        etPhone.setText(staff.getSdt());
+        etAddress.setText(staff.getDia_chi());
         btnSubmit.setOnClickListener(view -> submitUpdate());
     }
     private void submitUpdate(){
-        String username= textView.getText().toString().trim();
+        String username= name;
         String ten = etName.getText().toString().trim();
         String sdt = etPhone.getText().toString().trim();
         String dia_chi = etAddress.getText().toString().trim();

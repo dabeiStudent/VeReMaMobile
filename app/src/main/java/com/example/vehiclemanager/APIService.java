@@ -34,4 +34,13 @@ public interface APIService {
     @FormUrlEncoded
     @POST("updateprofilecustomer")
     Call<SubmitResponse> updatescustomer (@Field("ten") String ten,@Field("username") String username, @Field("sdt") String sdt, @Field("dia_chi") String dia_chi);
+
+    @FormUrlEncoded
+    @POST("addneworder")
+    Call<SubmitResponse> addneworder (@Field("maNv") int maNv,@Field("soXe") String soXe, @Field("tenXe") String tenXe,@Field("moTa") String moTa ,@Field("tenKh") String tenKh,
+                                      @Field("ngaynhan") String ngayNhan, @Field("thoiGian") String thoiGian,@Field("dichVu") int dichVu, @Field("tongTien") String tongTien,
+                                      @Field("diaChi") String diaChi, @Field("soDt") String soDt,@Field("tenTk") String tenTk, @Field("matKhau") String matKhau);
+
+    @GET("getallordermb")
+    Call<OrderResponse> getorder();
 }

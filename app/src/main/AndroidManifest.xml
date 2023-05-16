@@ -24,6 +24,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".AddNewOrder"
+            android:exported="false" />
+        <activity
             android:name=".EditCustomer"
             android:exported="false" />
         <activity
